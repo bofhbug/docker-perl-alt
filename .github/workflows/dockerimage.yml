@@ -17,5 +17,19 @@ jobs:
         with:
           username: bofhbug
           password: ${{ secrets.GITHUB_TOKEN }}
+          image_name: bofhbug/docker-perl-alt/runtime
+          registry: docker.pkg.github.com
+          
+      - uses: whoan/docker-build-with-cache-action@master
+        with:
+          username: bofhbug
+          password: ${{ secrets.GITHUB_TOKEN }}
           image_name: bofhbug/docker-perl-alt/build
+          registry: docker.pkg.github.com
+
+      - uses: whoan/docker-build-with-cache-action@master
+        with:
+          username: bofhbug
+          password: ${{ secrets.GITHUB_TOKEN }}
+          image_name: bofhbug/docker-perl-alt/devel
           registry: docker.pkg.github.com
