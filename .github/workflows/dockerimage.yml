@@ -1,0 +1,21 @@
+name: perl-alt Docker Image CI
+
+on: [push]
+
+jobs:
+
+  build:
+
+    name: Build docker image (with cache) and push it to registry
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v1
+
+      - uses: whoan/docker-build-with-cache-action@master
+        with:
+          username: bofhbug
+          password: ${{ secrets.GITHUB_TOKEN }}
+          image_name: bofhbug/docker-perl-alt/build
+          registry: docker.pkg.github.com
